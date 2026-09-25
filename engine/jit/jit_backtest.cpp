@@ -25,6 +25,7 @@
 #include "llvm/Passes/OptimizationLevel.h"
 #include <cmath>
 #include <functional>
+#include <chrono>
 #include <vector>
 #include <algorithm>
 #include <numeric>
@@ -159,10 +160,13 @@ int main(int argc,char**argv){
         "ewma(6,0.4) - lag(12)",
         "(ewma(3,0.5) - ewma(12,0.3)) / mean(24)",
     };
-    struct R{ std::string s; double sharpe, ic; };
+    using clk = std::chrono::high_resolution_clock;
+    auto ms = [](clk::duration d){ return std::chrono::duration<double,std::milli>(d).count(); };
+    struct R{ std::string s; double sharpe, ic, compile_ms, exec_ms; };
     std::vector<R> results;
     for(size_t i=0;i<dsl.size();++i){
         try{
+            auto t0=clk::now();
             auto ast = sig::parse(dsl[i]);
             auto ctx = std::make_unique<LLVMContext>();
             auto M = build_module(*ctx, ast.get(), /*dump=*/i==3);  // dump IR for one example
@@ -170,14 +174,19 @@ int main(int argc,char**argv){
             cantFail(J->addIRModule(orc::ThreadSafeModule(std::move(M), std::move(ctx))));
             auto sym = cantFail(J->lookup("sig"));
             SigFn fn = sym.toPtr<float(*)(const float*,int,int)>();
+            auto t1=clk::now();
             double sh,ic; backtest(p, fn, sh, ic);
-            results.push_back({dsl[i], sh, ic});
+            auto t2=clk::now();
+            results.push_back({dsl[i], sh, ic, ms(t1-t0), ms(t2-t1)});
         }catch(std::exception&e){ printf("  [%s] ERROR: %s\n", dsl[i].c_str(), e.what()); }
     }
     std::sort(results.begin(),results.end(),[](const R&a,const R&b){return a.ic>b.ic;});
     printf("\n=== signal search (JIT-compiled expressions, ranked by IC) ===\n");
-    printf("  %-42s %8s %8s\n","signal expression (DSL)","IC","Sharpe");
-    for(auto&r:results) printf("  %-42s %+8.3f %+8.3f\n", r.s.c_str(), r.ic, r.sharpe);
-    printf("\nJIT-compiled & backtested %zu signal structures.\n", results.size());
+    printf("  %-42s %7s %7s %10s %9s\n","signal expression (DSL)","IC","Sharpe","compile","backtest");
+    double tc=0,te=0;
+    for(auto&r:results){ printf("  %-42s %+7.3f %+7.3f %8.2fms %7.2fms\n",
+        r.s.c_str(), r.ic, r.sharpe, r.compile_ms, r.exec_ms); tc+=r.compile_ms; te+=r.exec_ms; }
+    printf("\nJIT-compiled & backtested %zu signal structures: avg compile %.2f ms, avg backtest %.2f ms.\n",
+           results.size(), tc/results.size(), te/results.size());
     return 0;
 }

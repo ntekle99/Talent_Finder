@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <vector>
 #include <numeric>
+#include <chrono>
 
 using namespace tf;
 
@@ -75,10 +76,40 @@ __global__ void reduce_best(const Result* out,int n,float* best){
 
 static std::vector<Params> build_grid(){
     std::vector<Params> g;
-    for(int lb:{6,12,24}) for(float dc:{0.2f,0.4f,0.6f}) for(float b:{0.f,0.5f,1.f})
-        for(float dec:{0.1f,0.2f,0.3f}) for(int h:{1,3,6}) g.push_back(Params{lb,dc,b,dec,h});
-    return g;
+    for(int lb=3; lb<=24; ++lb)                                  // 22
+        for(int di=1; di<=18; ++di){ float dc=di*0.05f;         // 18
+            for(float b:{0.f,0.25f,0.5f,0.75f,1.f})             // 5
+                for(float dec:{0.05f,0.1f,0.15f,0.2f,0.25f,0.3f})  // 6
+                    for(int h:{1,2,3,6}) g.push_back(Params{lb,dc,b,dec,h}); } // 4
+    return g;  // 22 * 18 * 5 * 6 * 4 = 47,520 configs
 }
+
+// Host reference with the SAME math as sweep_kernel (for the CPU-vs-GPU timing baseline).
+static float h_ewma(const Panel&p,int c,int t,int lb,float dcy){
+    float num=0,den=0,w=1; int s0=std::max(0,t-lb+1);
+    for(int s=t;s>=s0;--s){ float v=p.net_flow[p.idx(c,s)]; if(!is_nan(v)){num+=w*v;den+=w;} w*=(1-dcy);}
+    return den>0?num/den:kNaN; }
+static float h_fwd(const Panel&p,int c,int t,int h){ if(t+h>=p.n_months)return kNaN; float g=1;
+    for(int s=t+1;s<=t+h;++s){float r=p.ret[p.idx(c,s)]; if(is_nan(r))return kNaN; g*=(1+r);} return g-1; }
+static double host_combo(const Panel&p,const Params&pr){
+    int C=p.n_companies; std::vector<float> score(C),fwd(C); double sum=0,sum2=0; int np=0;
+    for(int t=0;t<p.n_months;++t){ double m=0;int nm=0;
+        for(int c=0;c<C;++c){ float mo=h_ewma(p,c,t,pr.lookback,pr.decay); score[c]=mo;
+            if(!is_nan(mo)){m+=mo;++nm;} fwd[c]=h_fwd(p,c,t,pr.horizon);}
+        if(nm<5)continue; m/=nm; double var=0;
+        for(int c=0;c<C;++c) if(!is_nan(score[c])) var+=(score[c]-m)*(score[c]-m);
+        double sd=std::sqrt(var/nm); if(sd<1e-9)sd=1;
+        for(int c=0;c<C;++c) if(!is_nan(score[c])) score[c]=(score[c]-m)/sd;
+        int elig=0; for(int c=0;c<C;++c) if(!is_nan(score[c])&&!is_nan(fwd[c]))++elig;
+        if(elig<5)continue; int k=(int)(pr.decile*elig); if(k<1)k=1;
+        double lo=0,sh=0;
+        for(int pick=0;pick<k;++pick){int bi=-1,si=-1;float bv=-1e30f,sv=1e30f;
+            for(int c=0;c<C;++c){ if(is_nan(score[c])||is_nan(fwd[c]))continue;
+                if(score[c]>bv){bv=score[c];bi=c;} if(score[c]<sv){sv=score[c];si=c;}}
+            if(bi>=0){lo+=fwd[bi];score[bi]=kNaN;} if(si>=0){sh+=fwd[si];score[si]=kNaN;}}
+        double pr_ret=lo/k-sh/k; sum+=pr_ret; sum2+=pr_ret*pr_ret; ++np; }
+    if(np==0)return 0; double mean=sum/np; double v=(sum2-np*mean*mean)/(np>1?np-1:1);
+    double sd=v>0?std::sqrt(v):0; return sd>1e-12?mean/sd*std::sqrt(12.0/pr.horizon):0; }
 
 int main(int argc,char** argv){
     std::string panel="data/panel/talent_panel.csv", returns="data/panel/returns.csv";
@@ -94,6 +125,12 @@ int main(int argc,char** argv){
     printf("panel %dx%d | %d combos | %d GPU(s)\n",C,M,N,nDev);
     for(int d=0;d<nDev;++d){ cudaDeviceProp pr; cudaGetDeviceProperties(&pr,d);
         printf("  GPU %d: %s\n",d,pr.name); }
+
+    // CPU baseline: single-threaded host sweep of the same grid (same math as the kernel)
+    auto cpu0=std::chrono::high_resolution_clock::now();
+    double cpu_best=-1e30; for(const auto&pr:grid){ double s=host_combo(p,pr); if(s>cpu_best)cpu_best=s; }
+    auto cpu1=std::chrono::high_resolution_clock::now();
+    double cpu_ms=std::chrono::duration<double,std::milli>(cpu1-cpu0).count();
 
     std::vector<int> devs(nDev); std::iota(devs.begin(),devs.end(),0);
     std::vector<ncclComm_t> comms(nDev);
@@ -119,6 +156,7 @@ int main(int argc,char** argv){
         CUDACHECK(cudaMalloc(&d_gbest[d],sizeof(float)));
     }
     // load panel onto GPU 0 only, then BROADCAST to all GPUs via NCCL
+    auto gpu0=std::chrono::high_resolution_clock::now();
     CUDACHECK(cudaSetDevice(0));
     CUDACHECK(cudaMemcpy(d_net[0],p.net_flow.data(),cells*sizeof(float),cudaMemcpyHostToDevice));
     CUDACHECK(cudaMemcpy(d_ret[0],p.ret.data(),cells*sizeof(float),cudaMemcpyHostToDevice));
@@ -142,6 +180,10 @@ int main(int argc,char** argv){
         reduce_best<<<1,1,0,st[d]>>>(d_out[d],cnt[d],d_lbest[d]);
     }
     for(int d=0;d<nDev;++d){ CUDACHECK(cudaSetDevice(d)); CUDACHECK(cudaStreamSynchronize(st[d])); }
+    auto gpu1=std::chrono::high_resolution_clock::now();
+    double gpu_ms=std::chrono::duration<double,std::milli>(gpu1-gpu0).count();
+    printf("\n[timing] %d configs | CPU 1-thread %.1f ms | GPU x%d %.1f ms | speedup %.1fx\n",
+           N, cpu_ms, nDev, gpu_ms, cpu_ms/gpu_ms);
 
     // report each GPU's local best, then ALL-REDUCE (MAX) so all GPUs agree on the global best
     std::vector<float> lbest(nDev);

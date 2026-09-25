@@ -21,3 +21,4 @@ data/events/
 
 # LLVM build artifact
 engine/jit/jit_backtest
+engine/jit/emit_ptx

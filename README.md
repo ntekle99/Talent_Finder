@@ -1,117 +1,83 @@
-# Talent Signal Trading MVP
+# Talent-Flow Alpha
 
-This project researches whether observable talent movement contains incremental information about liquid U.S. equities over 1–6 month horizons. It produces explainable company rankings and paper positions; it does not place trades or provide investment advice.
+Does **where tech talent goes** predict company value? This project builds a talent-migration
+signal from public data, backtests it against stock returns with proper factor controls, and
+runs the heavy compute on a **C++/CUDA + NCCL** engine with an **LLVM/NVPTX** signal compiler.
 
-## What counts as talent?
+## Headline finding (honest)
 
-The MVP treats talent as role-relevant human capital. Evidence is strongest when a person has measurable prior impact, scarce skills, meaningful seniority or decision authority, and a credible fit with the destination company. Signals include executive appointments/departures, curated CSV events, research affiliations, open-source activity, and patents. Public sources do not provide complete employee mobility, so broad workforce coverage is intentionally a future paid-data adapter.
+- **Raw hiring *headcount* predicts nothing** — long/short Sharpe ≈ 0, collapses out-of-sample.
+- **Person-level talent *caliber* does.** The strongest signal — *how much a company pays vs. the
+  national market rate for the specific roles it hires* — **survives momentum + sector controls
+  within tech**: Fama-MacBeth on 220 tech firms gives rank-**IC +0.05**, **sector-neutral Sharpe
+  0.73** (positive 7/8 years). Economically sensible, factor-robust, consistent.
+- **Not yet statistically proven.** Fama-MacBeth t ≈ 1.6 — the binding limit is *history length*
+  (free price data only reaches ~2016 → 8 annual periods), not universe size. Adding more years
+  (paid history) is the clear path to significance.
 
-Every event has a source URL, first-seen timestamp, event timestamp, confidence, and extraction version. Backtests only expose events after `first_seen_at`, preventing look-ahead leakage.
+The lesson the whole project is organized around: **talent = caliber of individuals, not employee
+count.**
 
-The current scoring layer blends supplied event fields with explainable heuristics:
+## Pipeline
 
-- role importance, such as CEO/CFO/CTO, president, VP, head-of, and director titles
-- scarce skills, such as AI, machine learning, GPUs, semiconductors, clinical work, cybersecurity, and infrastructure
-- company/role fit based on sector and role language
-- source reliability, with SEC filings weighted above user CSVs and weaker public adapters
-- surprise, such as external arrivals or departures
+```
+ DATA (Python)                              SIGNALS                    BACKTEST (C++/CUDA/NCCL)
+ H1B/LCA filings  ─┐                        research caliber ─┐        momentum→rank→L/S
+  (3.6GB, ~10M)    ├─► company×month ─────► wage premium      ├─► fuse ─► Sharpe/IC/drawdown
+ SEC EDGAR tickers ┤    panel               GitHub OSS       ─┘        Fama-MacBeth controls
+ Nasdaq/Yahoo px  ─┘                                                   2-GPU sweep (NCCL)
+                                                                       LLVM/NVPTX signal compiler
+```
 
-These are still research weights, not a trained alpha model. Before live trading, calibrate them on point-in-time historical data and compare performance against benchmark, sector, size, momentum, and liquidity controls.
+## Components
 
-## Quick start
+**Data (`scripts/`, `src/talent_finder/`)**
+- `build_panel.py` + `company_map.py` — parse 37 DOL H1B files (FY2010–2026) into a hiring panel.
+- `sec_universe.py` — match H1B employers to **595 public tickers** via SEC EDGAR.
+- `fetch_returns_nasdaq.py` / `fetch_returns_yahoo.py` — monthly returns (run on Brev to bypass
+  the corporate firewall + anti-bot blocks). `fetch_sic.py` — SEC SIC codes for tech filtering.
+
+**Talent signals (three complementary lenses)**
+- `build_talent_openalex.py` — elite-researcher inflow (OpenAlex citations + affiliation history,
+  advisory-affiliation filtered).
+- `build_wage_talent.py` / `_broad.py` — role-adjusted **wage premium** (the one that backtests).
+- `build_talent_github.py` — GitHub OSS impact (snapshot).
+- `build_talent_index.py` — fuse into one z-scored talent index + trajectory.
+
+**Backtest (`engine/`)**
+- `include/backtest.hpp`, `src/main.cpp` — C++17 engine: momentum → cross-sectional rank →
+  long/short → Sharpe/IC/drawdown; 243-config sweep; out-of-sample split. `tests/` verify it.
+- `kernels/cuda_backtest.cu` — GPU sweep. `kernels/nccl_backtest.cu` — **2-GPU** sweep with
+  **NCCL** collectives (`ncclBroadcast` panel, `ncclAllReduce` global-best). Runs on 2× T4.
+- `scripts/factor_control_broad.py` — Fama-MacBeth + sector-neutral (the validation above).
+
+**Signal compiler (`engine/jit/`)** — turns the backtester into a *signal-search* compiler.
+- `signal_ast.hpp` — backend-agnostic signal DSL/IR (`ewma`, `mean`, `lag`, arithmetic).
+- `jit_backtest.cpp` — lowers to **LLVM IR**, O2-optimizes, **ORC-JITs to native**, and searches
+  over signal *structures* by IC.
+- `emit_ptx.cpp` — same IR → **NVPTX**, emits valid GPU PTX (sm_75) for the NCCL engine.
+
+## Run it
 
 ```bash
-python -m pip install -e ".[dev]"
-pytest
-python -m talent_finder.cli demo
+# 1. talent panel + signals (Python)
+python scripts/build_panel.py && python scripts/build_talent_index.py
+
+# 2. C++ backtest (CPU; CUDA/NCCL builds on a GPU box)
+cmake -S engine -B engine/build && cmake --build engine/build && ./engine/build/talent_backtest
+
+# 3. factor-control validation
+python scripts/factor_control_broad.py
+
+# 4. LLVM-JIT signal search (needs: brew install llvm)
+bash engine/jit/build.sh && ./engine/jit/jit_backtest
+
+# 5. emit GPU PTX from the signal IR
+bash engine/jit/build_ptx.sh && ./engine/jit/emit_ptx "ewma(6,0.4) / mean(24) - 1"
 ```
 
-Ingest recent SEC Item 5.02 executive movement events:
+## Honest scope
 
-```bash
-talent-signal sec-ingest \
-  --cik 0000320193 \
-  --company-name "Apple Inc." \
-  --ticker AAPL \
-  --sector Technology \
-  --limit 25 \
-  --output data/events/apple-sec.jsonl
-```
-
-The command prints extracted events as JSON and optionally writes them to JSONL for downstream scoring/backtests.
-
-For a multi-company universe, create a CSV with required columns `cik,name` and optional columns `ticker,company_id,sector,market_cap`:
-
-```csv
-cik,name,ticker,sector,market_cap
-0000320193,Apple Inc.,AAPL,Technology,3000000000000
-0000789019,Microsoft Corporation,MSFT,Technology,3500000000000
-```
-
-Then batch-ingest SEC events:
-
-```bash
-talent-signal sec-ingest-universe \
-  --universe data/universe.csv \
-  --limit-per-company 25 \
-  --output data/events/sec-universe.jsonl \
-  --errors-output data/events/sec-universe-errors.csv
-```
-
-By default, the batch command keeps going when one company fails and records errors separately. Use `--fail-fast` when debugging a specific ingestion issue.
-
-Run a walk-forward backtest from saved events and a price CSV:
-
-```bash
-talent-signal backtest \
-  --events data/events/apple-sec.jsonl \
-  --prices data/prices.csv \
-  --universe data/universe.csv \
-  --benchmark-ticker SPY \
-  --start 2020-01-01 \
-  --end 2024-12-31 \
-  --frequency MS \
-  --horizon-days 63 \
-  --top-n 5 \
-  --min-market-cap 1000000000 \
-  --min-avg-dollar-volume 10000000 \
-  --max-per-sector 2 \
-  --returns-output data/backtests/apple-sec-returns.csv \
-  --portfolio-output data/backtests/apple-sec-portfolio.csv \
-  --buckets-output data/backtests/apple-sec-score-buckets.csv
-```
-
-Price CSVs require `date,ticker,close`; include `volume` to enable `--min-avg-dollar-volume`. The command prints summary metrics as JSON and can write per-position forward returns, per-rebalance portfolio returns, and score-bucket diagnostics to CSV.
-
-Optional dashboard:
-
-```bash
-python -m streamlit run src/talent_finder/app.py
-```
-
-## Backtesting
-
-`walk_forward` ranks companies at each rebalance date, buys the top positive scores, uses the next available price on or after the rebalance/horizon dates, and can report benchmark-relative excess returns with `benchmark_ticker`.
-
-Backtests can now enforce basic tradability constraints:
-
-- `--universe` restricts selection to a defined ticker universe and adds sector/market-cap metadata
-- `--min-market-cap` removes small/untradable companies when universe market caps are provided
-- `--min-avg-dollar-volume` removes illiquid names when price CSVs include `volume`
-- `--max-per-sector` limits concentration in one sector
-
-Metrics include portfolio return, excess return when a benchmark is provided, average positions per rebalance, eligible ticker count, event ticker coverage, unique ticker count, top ticker weight share, and sector concentration when universe sectors are available.
-
-Score-bucket diagnostics test whether the score rank itself has information. For each rebalance date, the scored universe is split into quantile buckets from low to high score. The backtest reports top-bucket return, bottom-bucket return, top-minus-bottom spread, and a simple monotonicity statistic. A promising signal should usually have a positive top-minus-bottom spread and avoid depending on one lucky rebalance.
-
-The backtester is still intentionally conservative and incomplete. A trading-grade version needs survivorship-safe prices, delisting returns, liquidity filters, sector-neutral portfolio construction, train/test splits, and paper-trading monitoring.
-
-## Data policy
-
-Use legally accessible public sources and retain citations. SEC submissions are the primary live adapter; OpenAlex, GitHub, USPTO, and user CSV inputs are enrichment adapters. Do not scrape access-controlled services. Configure a descriptive SEC `User-Agent` with `TALENT_SEC_USER_AGENT`.
-
-The SEC adapter can now list 8-K Item 5.02 filings and conservatively extract obvious appointment/resignation language from filing text into normalized `TalentEvent` objects. Ambiguous filings should go to manual review instead of becoming strong signals automatically.
-
-## CSV event format
-
-Required columns: `person_id, person_name, company_id, company_name, event_type, event_at, first_seen_at, source_url, confidence`. Optional columns include `role, source_company_id, source_company_name, impact, scarcity, fit, seniority, sector`.
+The **engineering** (data pipeline, C++/CUDA/NCCL engine, LLVM/NVPTX compiler) is complete and
+demonstrable. The **alpha** is promising but underpowered — a data-history limitation, not a flaw
+in the method. Not investment advice; research only.

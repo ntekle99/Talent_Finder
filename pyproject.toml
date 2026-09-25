@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "talent-signal"
+version = "0.1.0"
+description = "Public-data-first talent movement research and paper trading"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.0",
+  "pydantic>=2.0",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.35"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+talent-signal = "talent_finder.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

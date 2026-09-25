@@ -1,0 +1,20 @@
+# build
+engine/build/
+*.o
+*.obj
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+src/*.egg-info/
+
+# data (regenerate via scripts/make_sample_panel.py or real ingest)
+data/panel/*.csv
+data/raw/
+data/events/
+
+# os
+.DS_Store

@@ -1,0 +1,596 @@
+ticker,sector,sic,sic_desc
+A,Instruments,3826,Laboratory Analytical Instruments
+AA,Non-Tech,3334,Primary Production of  Aluminum
+AAL,Non-Tech,4512,"Air Transportation, Scheduled"
+AAOI,Semiconductors,3674,Semiconductors & Related Devices
+AAPL,Hardware,3571,Electronic Computers
+ABBNY,Non-Tech,3613,Switchgear & Switchboard Apparatus
+ABBV,Non-Tech,2834,Pharmaceutical Preparations
+ABNB,Non-Tech,7340,Services-To Dwellings & Other Buildings
+ABT,Non-Tech,2834,Pharmaceutical Preparations
+ACCO,Non-Tech,2780,"Blankbooks, Looseleaf Binders & Bookbindg & Relatd Work"
+ACHR,Non-Tech,3721,Aircraft
+ACIW,Software,7372,Services-Prepackaged Software
+ACM,Non-Tech,8711,Services-Engineering Services
+ADBE,Software,7372,Services-Prepackaged Software
+ADI,Semiconductors,3674,Semiconductors & Related Devices
+ADM,Non-Tech,2070,Fats & Oils
+ADNT,Non-Tech,3714,Motor Vehicle Parts & Accessories
+ADP,IT Services,7374,Services-Computer Processing & Data Preparation
+ADSK,Software,7372,Services-Prepackaged Software
+ADT,Non-Tech,7381,"Services-Detective, Guard & Armored Car Services"
+AEIS,Semiconductors,3679,"Electronic Components, NEC"
+AEO,Non-Tech,5651,Retail-Family Clothing Stores
+AEP,Non-Tech,4911,Electric Services
+AFRM,Non-Tech,6141,Personal Credit Institutions
+AGYS,IT Services,7373,Services-Computer Integrated Systems Design
+AI,Software,7372,Services-Prepackaged Software
+AIG,Non-Tech,6331,"Fire, Marine & Casualty Insurance"
+AKAM,Non-Tech,7389,"Services-Business Services, NEC"
+ALAB,Semiconductors,3674,Semiconductors & Related Devices
+ALGM,Semiconductors,3674,Semiconductors & Related Devices
+ALGN,Non-Tech,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies"
+ALKS,Non-Tech,2834,Pharmaceutical Preparations
+ALNY,Non-Tech,2834,Pharmaceutical Preparations
+ALRM,Software,7372,Services-Prepackaged Software
+AMBA,Semiconductors,3674,Semiconductors & Related Devices
+AMD,Semiconductors,3674,Semiconductors & Related Devices
+AMGN,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+AMP,Non-Tech,6282,Investment Advice
+AMPH,Non-Tech,2834,Pharmaceutical Preparations
+AMPL,Software,7372,Services-Prepackaged Software
+AMRX,Non-Tech,2834,Pharmaceutical Preparations
+AMZN,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+ANDG,Non-Tech,7389,"Services-Business Services, NEC"
+ANET,Hardware,3576,Computer Communications Equipment
+ANGI,Non-Tech,7310,Services-Advertising
+APP,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+APPF,Software,7372,Services-Prepackaged Software
+APPN,Software,7372,Services-Prepackaged Software
+APTV,Non-Tech,3714,Motor Vehicle Parts & Accessories
+ARAY,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+ARLO,Non-Tech,7381,"Services-Detective, Guard & Armored Car Services"
+ARW,Non-Tech,5065,"Wholesale-Electronic Parts & Equipment, NEC"
+ASAN,Software,7372,Services-Prepackaged Software
+ASML,Semiconductors,3559,"Special Industry Machinery, NEC"
+ATEN,Hardware,3576,Computer Communications Equipment
+ATEYY,Semiconductors,3674,Semiconductors & Related Devices
+ATI,Non-Tech,3317,Steel Pipe & Tubes
+ATMP,Non-Tech,6029,"Commercial Banks, NEC"
+ATRA,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+AUR,IT Services,7373,Services-Computer Integrated Systems Design
+AVGO,Semiconductors,3674,Semiconductors & Related Devices
+AVT,Non-Tech,5065,"Wholesale-Electronic Parts & Equipment, NEC"
+AVY,Non-Tech,2670,Converted Paper & Paperboard Prods (No Contaners/Boxes)
+AXON,Non-Tech,3480,"Ordnance & Accessories, (No Vehicles/Guided Missiles)"
+AXP,Non-Tech,6199,Finance Services
+AZO,Non-Tech,5531,Retail-Auto & Home Supply Stores
+AZTA,Semiconductors,3559,"Special Industry Machinery, NEC"
+BA,Non-Tech,3721,Aircraft
+BAH,Non-Tech,8742,Services-Management Consulting Services
+BAM,Non-Tech,6282,Investment Advice
+BAND,Software,7372,Services-Prepackaged Software
+BB,Software,7372,Services-Prepackaged Software
+BBY,Non-Tech,5731,"Retail-Radio, Tv & Consumer Electronics Stores"
+BC,Non-Tech,3510,Engines & Turbines
+BDC,Non-Tech,3357,Drawing & Insulating of  Nonferrous Wire
+BE,Non-Tech,3620,Electrical Industrial Apparatus
+BFAM,Non-Tech,8351,Services-Child Day Care Services
+BIDU,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+BIIB,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+BIO,Instruments,3826,Laboratory Analytical Instruments
+BJ,Non-Tech,5331,Retail-Variety Stores
+BKR,Non-Tech,3533,Oil & Gas Field Machinery & Equipment
+BLCO,Non-Tech,3851,Ophthalmic Goods
+BLK,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+BLKB,Software,7372,Services-Prepackaged Software
+BLND,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+BMRN,Non-Tech,2834,Pharmaceutical Preparations
+BMY,Non-Tech,2834,Pharmaceutical Preparations
+BNS,Non-Tech,6022,State Commercial Banks
+BNY,Non-Tech,6022,State Commercial Banks
+BODI,Non-Tech,5960,Retail-Nonstore Retailers
+BOX,Software,7372,Services-Prepackaged Software
+BP,Non-Tech,2911,Petroleum Refining
+BR,Non-Tech,7389,"Services-Business Services, NEC"
+BRZE,Software,7372,Services-Prepackaged Software
+BSX,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+BSY,Software,7372,Services-Prepackaged Software
+BWMN,Non-Tech,8742,Services-Management Consulting Services
+BX,Non-Tech,6282,Investment Advice
+BYND,Non-Tech,2000,Food and Kindred Products
+CACC,Non-Tech,6141,Personal Credit Institutions
+CAG,Non-Tech,2000,Food and Kindred Products
+CAH,Non-Tech,5122,"Wholesale-Drugs, Proprietaries & Druggists' Sundries"
+CALX,Comm/Internet,4899,"Communications Services, NEC"
+CALY,Non-Tech,3949,"Sporting & Athletic Goods, NEC"
+CARG,IT Services,7374,Services-Computer Processing & Data Preparation
+CARS,IT Services,7374,Services-Computer Processing & Data Preparation
+CART,Non-Tech,7389,"Services-Business Services, NEC"
+CAT,Non-Tech,3531,Construction Machinery & Equip
+CBOE,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+CBRE,Non-Tech,6500,Real Estate
+CBRS,Semiconductors,3674,Semiconductors & Related Devices
+CCC,Software,7372,Services-Prepackaged Software
+CCHH,Non-Tech,5812,Retail-Eating  Places
+CCI,Non-Tech,6798,Real Estate Investment Trusts
+CCL,Non-Tech,4400,Water Transportation
+CDLX,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+CDNA,Non-Tech,8071,Services-Medical Laboratories
+CDNS,Software,7372,Services-Prepackaged Software
+CDW,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+CE,Non-Tech,2820,"Plastic Material, Synth Resin/Rubber, Cellulos (No Glass)"
+CEG,Non-Tech,4911,Electric Services
+CGNX,Non-Tech,3823,"Industrial Instruments For Measurement, Display, and Control"
+CHGG,Non-Tech,8200,Services-Educational Services
+CHPT,Non-Tech,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies"
+CHRW,Non-Tech,4731,Arrangement of  Transportation of  Freight & Cargo
+CHSCP,Non-Tech,5150,Wholesale-Farm Product Raw Materials
+CHWY,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+CHYM,Non-Tech,6199,Finance Services
+CIEN,Comm/Internet,3661,Telephone & Telegraph Apparatus
+CL,Non-Tech,2844,"Perfumes, Cosmetics & Other Toilet Preparations"
+CLS,Semiconductors,3672,Printed Circuit Boards
+CMI,Non-Tech,3510,Engines & Turbines
+CMPR,Non-Tech,2750,Commercial Printing
+CMS-PB,Non-Tech,4931,Electric & Other Services Combined
+CNXN,Non-Tech,5045,Wholesale-Computers & Peripheral Equipment & Software
+COHR,Instruments,3827,Optical Instruments & Lenses
+COMP,Non-Tech,6531,Real Estate Agents & Managers (For Others)
+COP,Non-Tech,2911,Petroleum Refining
+COTY,Non-Tech,2844,"Perfumes, Cosmetics & Other Toilet Preparations"
+COUR,Software,7372,Services-Prepackaged Software
+CPAY,Non-Tech,7389,"Services-Business Services, NEC"
+CPRT,Non-Tech,5500,Retail-Auto Dealers & Gasoline Stations
+CR,Non-Tech,3490,Miscellaneous Fabricated Metal Products
+CRAI,Non-Tech,8111,Services-Legal Services
+CRC,Non-Tech,1311,Crude Petroleum & Natural Gas
+CRCT,Semiconductors,3559,"Special Industry Machinery, NEC"
+CRM,Software,7372,Services-Prepackaged Software
+CRSP,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+CRUS,Semiconductors,3674,Semiconductors & Related Devices
+CRWD,Software,7372,Services-Prepackaged Software
+CRWV,Software,7372,Services-Prepackaged Software
+CSCO,Hardware,3576,Computer Communications Equipment
+CTAS,Non-Tech,2320,"Men's & Boys' Furnishgs, Work Clothg, & Allied Garments"
+CTGG,Comm/Internet,4813,Telephone Communications (No Radiotelephone)
+CTSH,IT Services,7371,Services-Computer Programming Services
+CVLT,Software,7372,Services-Prepackaged Software
+CVNA,Non-Tech,5500,Retail-Auto Dealers & Gasoline Stations
+CVX,Non-Tech,2911,Petroleum Refining
+CXM,Software,7372,Services-Prepackaged Software
+CYN,IT Services,7371,Services-Computer Programming Services
+DAL,Non-Tech,4512,"Air Transportation, Scheduled"
+DASH,Non-Tech,7389,"Services-Business Services, NEC"
+DBX,Software,7372,Services-Prepackaged Software
+DDOG,Software,7372,Services-Prepackaged Software
+DE,Non-Tech,3523,Farm Machinery & Equipment
+DECK,Non-Tech,3021,Rubber & Plastics Footwear
+DG,Non-Tech,5331,Retail-Variety Stores
+DGX,Non-Tech,8071,Services-Medical Laboratories
+DH,Software,7372,Services-Prepackaged Software
+DKNG,Non-Tech,7990,Services-Miscellaneous Amusement & Recreation
+DKS,Non-Tech,5940,Retail-Miscellaneous Shopping Goods Stores
+DLB,Non-Tech,6794,Patent Owners & Lessors
+DLX,Non-Tech,2780,"Blankbooks, Looseleaf Binders & Bookbindg & Relatd Work"
+DNA,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+DOCN,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+DOCU,Software,7372,Services-Prepackaged Software
+DOX,IT Services,7371,Services-Computer Programming Services
+DPZ,Non-Tech,5140,Wholesale-Groceries & Related Products
+DT,Software,7372,Services-Prepackaged Software
+DUOL,Software,7372,Services-Prepackaged Software
+DV,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+DVA,Non-Tech,8090,"Services-Misc Health & Allied Services, NEC"
+DXCM,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+EBAY,Non-Tech,7389,"Services-Business Services, NEC"
+ECL,Non-Tech,2840,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics"
+EFX,Non-Tech,7320,"Services-Consumer Credit Reporting, Collection Agencies"
+EGAN,Software,7372,Services-Prepackaged Software
+EL,Non-Tech,2844,"Perfumes, Cosmetics & Other Toilet Preparations"
+ELV,Non-Tech,6324,Hospital & Medical Service Plans
+EMN,Non-Tech,2821,"Plastic Materials, Synth Resins & Nonvulcan Elastomers"
+EMR,Non-Tech,3600,Electronic & Other Electrical Equipment (No Computer Equip)
+ENPH,Semiconductors,3674,Semiconductors & Related Devices
+ENTG,Non-Tech,3089,"Plastics Products, NEC"
+EOG,Non-Tech,1311,Crude Petroleum & Natural Gas
+EPAM,IT Services,7371,Services-Computer Programming Services
+EQIX,Non-Tech,6798,Real Estate Investment Trusts
+ERIE,Non-Tech,6411,"Insurance Agents, Brokers & Service"
+ETN,Non-Tech,3590,Misc Industrial & Commercial Machinery & Equipment
+ETSY,Non-Tech,7389,"Services-Business Services, NEC"
+EVER,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+EVH,Non-Tech,8741,Services-Management Services
+EW,Non-Tech,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies"
+EXEL,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+EXPD,Non-Tech,4731,Arrangement of  Transportation of  Freight & Cargo
+EXPE,Non-Tech,4700,Transportation Services
+EXTR,Hardware,3576,Computer Communications Equipment
+EYE,Non-Tech,3851,Ophthalmic Goods
+F,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+FCX,Non-Tech,1000,Metal Mining
+FDS,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+FDXF,Non-Tech,4513,Air Courier Services
+FFIV,Hardware,3576,Computer Communications Equipment
+FICO,Non-Tech,7389,"Services-Business Services, NEC"
+FIG,Software,7372,Services-Prepackaged Software
+FIVE,Non-Tech,5331,Retail-Variety Stores
+FIVN,IT Services,7374,Services-Computer Processing & Data Preparation
+FLNC,Non-Tech,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies"
+FMC,Non-Tech,2800,Chemicals & Allied Products
+FMCC,Non-Tech,6111,Federal & Federally-Sponsored Credit Agencies
+FOA,Non-Tech,6162,Mortgage Bankers & Loan Correspondents
+FORM,Semiconductors,3674,Semiconductors & Related Devices
+FRNM,Non-Tech,8071,Services-Medical Laboratories
+FROG,Software,7372,Services-Prepackaged Software
+FRSH,Software,7372,Services-Prepackaged Software
+FSLR,Semiconductors,3674,Semiconductors & Related Devices
+FTI,Non-Tech,3533,Oil & Gas Field Machinery & Equipment
+FTNT,Hardware,3577,"Computer Peripheral Equipment, NEC"
+FTRE,Non-Tech,8071,Services-Medical Laboratories
+FUBO,Non-Tech,7812,Services-Motion Picture & Video Tape Production
+FUSE,IT Services,7373,Services-Computer Integrated Systems Design
+G,Non-Tech,8742,Services-Management Consulting Services
+GAP,Non-Tech,5651,Retail-Family Clothing Stores
+GDOT,Non-Tech,6199,Finance Services
+GDRX,IT Services,7374,Services-Computer Processing & Data Preparation
+GDYN,Software,7372,Services-Prepackaged Software
+GE,Non-Tech,3600,Electronic & Other Electrical Equipment (No Computer Equip)
+GEF,Non-Tech,3412,"Metal Shipping Barrels, Drums, Kegs & Pails"
+GEN,Software,7372,Services-Prepackaged Software
+GH,Non-Tech,8071,Services-Medical Laboratories
+GILD,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+GIS,Non-Tech,2040,Grain Mill Products
+GM,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+GME,Non-Tech,5734,Retail-Computer & Computer Software Stores
+GMED,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+GOGO,Comm/Internet,4899,"Communications Services, NEC"
+GOOGL,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+GPC,Non-Tech,5013,Wholesale-Motor Vehicle Supplies & New Parts
+GPN,Non-Tech,7389,"Services-Business Services, NEC"
+GPRO,Non-Tech,3861,Photographic Equipment & Supplies
+GRAL,Non-Tech,8071,Services-Medical Laboratories
+GRPN,Non-Tech,7311,Services-Advertising Agencies
+GS,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+GTM,Software,7372,Services-Prepackaged Software
+GWRE,Software,7372,Services-Prepackaged Software
+GWW,Non-Tech,5000,Wholesale-Durable Goods
+GXXM,Non-Tech,8742,Services-Management Consulting Services
+HCAT,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+HCKT,Non-Tech,8742,Services-Management Consulting Services
+HD,Non-Tech,5211,Retail-Lumber & Other Building Materials Dealers
+HLI,Non-Tech,6282,Investment Advice
+HLIT,Comm/Internet,3663,Radio & Tv Broadcasting & Communications Equipment
+HLT,Non-Tech,7011,Hotels & Motels
+HNGE,IT Services,7374,Services-Computer Processing & Data Preparation
+HNI,Non-Tech,2522,Office Furniture (No Wood)
+HON,Non-Tech,3724,Aircraft Engines & Engine Parts
+HOOD,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+HPE,Hardware,3570,Computer & office Equipment
+HPQ,Hardware,3570,Computer & office Equipment
+HQY,Non-Tech,7389,"Services-Business Services, NEC"
+HSTM,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+HTFL,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+HTHIY,Non-Tech,1600,Heavy Construction Other Than Bldg Const - Contractors
+HUBG,Non-Tech,4731,Arrangement of  Transportation of  Freight & Cargo
+HUBS,Software,7372,Services-Prepackaged Software
+HUM,Non-Tech,6324,Hospital & Medical Service Plans
+HYLN,Non-Tech,3713,Truck & Bus Bodies
+IBKR,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+IBM,Hardware,3570,Computer & office Equipment
+IBTA,Non-Tech,7310,Services-Advertising
+ICE,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+IFF,Non-Tech,2860,Industrial Organic Chemicals
+IFNNY,Semiconductors,3674,Semiconductors & Related Devices
+ILMN,Instruments,3826,Laboratory Analytical Instruments
+INCY,Non-Tech,8731,Services-Commercial Physical & Biological Research
+INFY,IT Services,7371,Services-Computer Programming Services
+INGM,Non-Tech,5045,Wholesale-Computers & Peripheral Equipment & Software
+INSM,Non-Tech,2834,Pharmaceutical Preparations
+INTC,Semiconductors,3674,Semiconductors & Related Devices
+INTU,Software,7372,Services-Prepackaged Software
+IOT,IT Services,7373,Services-Computer Integrated Systems Design
+IQV,Non-Tech,8731,Services-Commercial Physical & Biological Research
+IR,Non-Tech,3560,General Industrial Machinery & Equipment
+ISRG,Non-Tech,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies"
+IT,Non-Tech,8741,Services-Management Services
+ITRI,Non-Tech,3825,Instruments For Meas & Testing of  Electricity & Elec Signals
+ITW,Non-Tech,3560,General Industrial Machinery & Equipment
+JAZZ,Non-Tech,2834,Pharmaceutical Preparations
+JBL,Semiconductors,3672,Printed Circuit Boards
+JBLU,Non-Tech,4512,"Air Transportation, Scheduled"
+JLL,Non-Tech,6531,Real Estate Agents & Managers (For Others)
+JPM,Non-Tech,6021,National Commercial Banks
+KBR,Non-Tech,1600,Heavy Construction Other Than Bldg Const - Contractors
+KD,IT Services,7373,Services-Computer Integrated Systems Design
+KELYA,Non-Tech,7363,Services-Help Supply Services
+KEYS,Non-Tech,3823,"Industrial Instruments For Measurement, Display, and Control"
+KFRC,Non-Tech,7363,Services-Help Supply Services
+KFY,Non-Tech,7361,Services-Employment Agencies
+KLAC,Instruments,3827,Optical Instruments & Lenses
+KMB,Non-Tech,2670,Converted Paper & Paperboard Prods (No Contaners/Boxes)
+KMT,Non-Tech,3541,"Machine Tools, Metal Cutting Types"
+KO,Non-Tech,2080,Beverages
+KR,Non-Tech,5411,Retail-Grocery Stores
+KSS,Non-Tech,5311,Retail-Department Stores
+KVYO,Software,7372,Services-Prepackaged Software
+LAUR,Non-Tech,8200,Services-Educational Services
+LCID,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+LDOS,IT Services,7373,Services-Computer Integrated Systems Design
+LEA,Non-Tech,3714,Motor Vehicle Parts & Accessories
+LEGN,Non-Tech,2834,Pharmaceutical Preparations
+LEVI,Non-Tech,2300,Apparel & Other Finishd Prods of  Fabrics & Similar Matl
+LIF,IT Services,7374,Services-Computer Processing & Data Preparation
+LIFE,Non-Tech,6411,"Insurance Agents, Brokers & Service"
+LII,Non-Tech,3585,Air-Cond & Warm Air Heatg Equip & Comm & Indl Refrig Equip
+LIME,Software,7372,Services-Prepackaged Software
+LIN,Non-Tech,2810,Industrial Inorganic Chemicals
+LNC,Non-Tech,6311,Life Insurance
+LNG,Non-Tech,4924,Natural Gas Distribution
+LOGC,Non-Tech,1400,Mining & Quarrying of  Nonmetallic Minerals (No Fuels)
+LPLA,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+LRCX,Semiconductors,3559,"Special Industry Machinery, NEC"
+LRN,Non-Tech,8200,Services-Educational Services
+LSEGY,Non-Tech,,
+LUV,Non-Tech,4512,"Air Transportation, Scheduled"
+LYFT,Non-Tech,7389,"Services-Business Services, NEC"
+LZ,IT Services,7374,Services-Computer Processing & Data Preparation
+MANH,Software,7372,Services-Prepackaged Software
+MC,Non-Tech,6282,Investment Advice
+MCHP,Semiconductors,3674,Semiconductors & Related Devices
+MCK,Non-Tech,5122,"Wholesale-Drugs, Proprietaries & Druggists' Sundries"
+MDB,Software,7372,Services-Prepackaged Software
+MDT,Non-Tech,3845,Electromedical & Electrotherapeutic Apparatus
+MEDP,Non-Tech,8731,Services-Commercial Physical & Biological Research
+MET,Non-Tech,6311,Life Insurance
+META,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+MGNI,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+MH,Non-Tech,2741,Miscellaneous Publishing
+MHK,Non-Tech,2273,Carpets & Rugs
+MKTX,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+MMM,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+MMS,Non-Tech,7389,"Services-Business Services, NEC"
+MOH,Non-Tech,6324,Hospital & Medical Service Plans
+MORN,Non-Tech,6282,Investment Advice
+MPC,Non-Tech,2911,Petroleum Refining
+MPWR,Semiconductors,3674,Semiconductors & Related Devices
+MQ,Software,7372,Services-Prepackaged Software
+MRCY,Semiconductors,3670,Electronic Components & Accessories
+MRK,Non-Tech,2834,Pharmaceutical Preparations
+MRNA,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+MS,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+MSCI,Non-Tech,7389,"Services-Business Services, NEC"
+MSFT,Software,7372,Services-Prepackaged Software
+MSI,Comm/Internet,3663,Radio & Tv Broadcasting & Communications Equipment
+MT,Non-Tech,3312,"Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)"
+MTB,Non-Tech,6022,State Commercial Banks
+MTCH,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+MTSI,Semiconductors,3674,Semiconductors & Related Devices
+MU,Semiconductors,3674,Semiconductors & Related Devices
+MXL,Semiconductors,3674,Semiconductors & Related Devices
+NAVN,Software,7372,Services-Prepackaged Software
+NDAQ,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+NET,Software,7372,Services-Prepackaged Software
+NFLX,Non-Tech,7841,Services-Video Tape Rental
+NIO,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+NKE,Non-Tech,3021,Rubber & Plastics Footwear
+NMR,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+NOK,Comm/Internet,3663,Radio & Tv Broadcasting & Communications Equipment
+NOW,Software,7372,Services-Prepackaged Software
+NRDS,IT Services,7374,Services-Computer Processing & Data Preparation
+NRG,Non-Tech,4911,Electric Services
+NRIX,Non-Tech,2834,Pharmaceutical Preparations
+NSC,Non-Tech,4011,"Railroads, Line-Haul Operating"
+NTAP,Hardware,3572,Computer Storage Devices
+NTCT,IT Services,7373,Services-Computer Integrated Systems Design
+NTGR,Hardware,3576,Computer Communications Equipment
+NTLA,Non-Tech,2835,In Vitro & In Vivo Diagnostic Substances
+NTNX,Software,7372,Services-Prepackaged Software
+NTRA,Non-Tech,8071,Services-Medical Laboratories
+NTRS,Non-Tech,6022,State Commercial Banks
+NTSK,Software,7372,Services-Prepackaged Software
+NVAX,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+NVDA,Semiconductors,3674,Semiconductors & Related Devices
+NVST,Non-Tech,3843,Dental Equipment & Supplies
+NWL,Non-Tech,3089,"Plastics Products, NEC"
+NXDR,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+NYT,Non-Tech,2711,Newspapers: Publishing or  Publishing & Printing
+OKTA,Software,7372,Services-Prepackaged Software
+OMCL,Hardware,3571,Electronic Computers
+ON,Semiconductors,3674,Semiconductors & Related Devices
+ONC,Non-Tech,2834,Pharmaceutical Preparations
+ONTO,Instruments,3829,"Measuring & Controlling Devices, NEC"
+OOMA,IT Services,7374,Services-Computer Processing & Data Preparation
+ORCL,Software,7372,Services-Prepackaged Software
+OTEX,IT Services,7373,Services-Computer Integrated Systems Design
+OZK,Non-Tech,,
+PACB,Instruments,3826,Laboratory Analytical Instruments
+PANW,Hardware,3577,"Computer Peripheral Equipment, NEC"
+PATH,Software,7372,Services-Prepackaged Software
+PAYX,Non-Tech,8700,"Services-Engineering, Accounting, Research, Management"
+PCAR,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+PCOR,Software,7372,Services-Prepackaged Software
+PCTY,Software,7372,Services-Prepackaged Software
+PD,Software,7372,Services-Prepackaged Software
+PEGA,IT Services,7374,Services-Computer Processing & Data Preparation
+PEN,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+PEP,Non-Tech,2080,Beverages
+PFE,Non-Tech,2834,Pharmaceutical Preparations
+PG,Non-Tech,2840,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics"
+PGNY,Non-Tech,8090,"Services-Misc Health & Allied Services, NEC"
+PH,Non-Tech,3490,Miscellaneous Fabricated Metal Products
+PII,Non-Tech,3790,Miscellaneous Transportation Equipment
+PINS,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+PJT,Non-Tech,6282,Investment Advice
+PLTR,Software,7372,Services-Prepackaged Software
+PNC,Non-Tech,6021,National Commercial Banks
+PODD,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+PONY,IT Services,7373,Services-Computer Integrated Systems Design
+POWI,Semiconductors,3674,Semiconductors & Related Devices
+PPG,Non-Tech,2851,"Paints, Varnishes, Lacquers, Enamels & Allied Prods"
+PRAA,Non-Tech,6153,Short-Term Business Credit Institutions
+PRCT,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+PSNL,Non-Tech,8071,Services-Medical Laboratories
+PSX,Non-Tech,2911,Petroleum Refining
+PTC,Software,7372,Services-Prepackaged Software
+PTCT,Non-Tech,2834,Pharmaceutical Preparations
+PTON,Non-Tech,3949,"Sporting & Athletic Goods, NEC"
+PUBM,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+PYPL,Non-Tech,7389,"Services-Business Services, NEC"
+QLYS,Software,7372,Services-Prepackaged Software
+QNST,Non-Tech,7389,"Services-Business Services, NEC"
+QRVO,Semiconductors,3674,Semiconductors & Related Devices
+QSR,Non-Tech,5812,Retail-Eating  Places
+QVCG,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+R,Non-Tech,7510,Services-Auto Rental & Leasing (No Drivers)
+RAMP,IT Services,7374,Services-Computer Processing & Data Preparation
+RBGLY,Non-Tech,,
+RBLX,Software,7372,Services-Prepackaged Software
+RBRK,Software,7372,Services-Prepackaged Software
+RCL,Non-Tech,4400,Water Transportation
+RCMT,Non-Tech,7363,Services-Help Supply Services
+RCUS,Non-Tech,2834,Pharmaceutical Preparations
+RDDT,IT Services,7374,Services-Computer Processing & Data Preparation
+REGN,Non-Tech,2834,Pharmaceutical Preparations
+RELX,Non-Tech,7389,"Services-Business Services, NEC"
+RHI,Non-Tech,7363,Services-Help Supply Services
+RKT,Non-Tech,6162,Mortgage Bankers & Loan Correspondents
+RL,Non-Tech,2320,"Men's & Boys' Furnishgs, Work Clothg, & Allied Garments"
+RMBS,Semiconductors,3674,Semiconductors & Related Devices
+RMD,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+RNG,IT Services,7374,Services-Computer Processing & Data Preparation
+ROIV,Non-Tech,2834,Pharmaceutical Preparations
+ROK,Instruments,3829,"Measuring & Controlling Devices, NEC"
+ROKU,Non-Tech,4841,Cable & Other Pay Television Services
+ROOT,Non-Tech,6331,"Fire, Marine & Casualty Insurance"
+RRX,Non-Tech,3569,"General Industrial Machinery & Equipment, NEC"
+RSG,Non-Tech,4953,Refuse Systems
+RUN,Non-Tech,1700,Construction - Special Trade Contractors
+RY,Non-Tech,6029,"Commercial Banks, NEC"
+SABR,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+SAIC,IT Services,7373,Services-Computer Integrated Systems Design
+SANA,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+SAP,Software,7372,Services-Prepackaged Software
+SCE-PM,Non-Tech,4911,Electric Services
+SCOR,Non-Tech,7389,"Services-Business Services, NEC"
+SDGR,Non-Tech,2834,Pharmaceutical Preparations
+SEIC,Non-Tech,6211,"Security Brokers, Dealers & Flotation Companies"
+SFIX,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+SGMOQ,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+SHOP,Software,7372,Services-Prepackaged Software
+SHW,Non-Tech,5200,"Retail-Building Materials, Hardware, Garden Supply"
+SIRI,Non-Tech,4832,Radio Broadcasting Stations
+SLAB,Semiconductors,3674,Semiconductors & Related Devices
+SMCI,Hardware,3571,Electronic Computers
+SMSI,Software,7372,Services-Prepackaged Software
+SNAP,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+SNBRQ,Non-Tech,2510,Household Furniture
+SNDK,Hardware,3572,Computer Storage Devices
+SNEX,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+SNN,Non-Tech,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies"
+SNOW,Software,7372,Services-Prepackaged Software
+SNPS,Software,7372,Services-Prepackaged Software
+SNUS-PI,Non-Tech,6021,National Commercial Banks
+SONO,Non-Tech,3651,Household Audio & Video Equipment
+SPCX,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+SPGI,Non-Tech,7320,"Services-Consumer Credit Reporting, Collection Agencies"
+SPWR,Non-Tech,1700,Construction - Special Trade Contractors
+SRI,Non-Tech,3714,Motor Vehicle Parts & Accessories
+SRPT,Non-Tech,2834,Pharmaceutical Preparations
+SSNC,Software,7372,Services-Prepackaged Software
+SSTK,IT Services,7374,Services-Computer Processing & Data Preparation
+ST,Non-Tech,3823,"Industrial Instruments For Measurement, Display, and Control"
+STE,Non-Tech,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies"
+STUB,Non-Tech,7990,Services-Miscellaneous Amusement & Recreation
+STZ,Non-Tech,2080,Beverages
+SWK,Non-Tech,3420,"Cutlery, Handtools & General Hardware"
+SWKS,Semiconductors,3674,Semiconductors & Related Devices
+SWX,Non-Tech,4923,Natural Gas Transmisison & Distribution
+SYK,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+SYM,Non-Tech,3569,"General Industrial Machinery & Equipment, NEC"
+SYNA,Semiconductors,3674,Semiconductors & Related Devices
+SYY,Non-Tech,5140,Wholesale-Groceries & Related Products
+T,Comm/Internet,4813,Telephone Communications (No Radiotelephone)
+TAP,Non-Tech,2082,Malt Beverages
+TDOC,Non-Tech,8011,Services-Offices & Clinics of  Doctors of  Medicine
+TDUP,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+TEAM,Software,7372,Services-Prepackaged Software
+TEL,Non-Tech,5065,"Wholesale-Electronic Parts & Equipment, NEC"
+TEM,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+TER,Non-Tech,3825,Instruments For Meas & Testing of  Electricity & Elec Signals
+TEX,Non-Tech,3537,"Industrial Trucks, Tractors, Trailors & Stackers"
+THRM,Non-Tech,3714,Motor Vehicle Parts & Accessories
+THRY,Non-Tech,7310,Services-Advertising
+TMO,Instruments,3829,"Measuring & Controlling Devices, NEC"
+TMUS,Non-Tech,4812,Radiotelephone Communications
+TNET,Non-Tech,7389,"Services-Business Services, NEC"
+TOST,IT Services,7374,Services-Computer Processing & Data Preparation
+TPR,Non-Tech,3100,Leather & Leather Products
+TREE,Non-Tech,6163,Loan Brokers
+TRIP,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+TRMB,Instruments,3829,"Measuring & Controlling Devices, NEC"
+TRU,Non-Tech,7320,"Services-Consumer Credit Reporting, Collection Agencies"
+TSLA,Non-Tech,3711,Motor Vehicles & Passenger Car Bodies
+TSN,Non-Tech,2015,Poultry Slaughtering and Processing
+TSPH,IT Services,7373,Services-Computer Integrated Systems Design
+TT,Non-Tech,3822,Auto Controls For Regulating Residential & Comml Environments
+TTAN,Software,7372,Services-Prepackaged Software
+TTD,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+TTEK,Non-Tech,8711,Services-Engineering Services
+TTWO,Software,7372,Services-Prepackaged Software
+TW,Non-Tech,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services"
+TWLO,Software,7372,Services-Prepackaged Software
+TWST,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+TXG,Instruments,3826,Laboratory Analytical Instruments
+TXN,Semiconductors,3674,Semiconductors & Related Devices
+TYL,Software,7372,Services-Prepackaged Software
+UAA,Non-Tech,2300,Apparel & Other Finishd Prods of  Fabrics & Similar Matl
+UAL,Non-Tech,4512,"Air Transportation, Scheduled"
+UBER,Non-Tech,7389,"Services-Business Services, NEC"
+UBS,Non-Tech,6021,National Commercial Banks
+UIS,IT Services,7373,Services-Computer Integrated Systems Design
+UNM,Non-Tech,6321,Accident & Health Insurance
+UPWK,IT Services,7374,Services-Computer Processing & Data Preparation
+URBN,Non-Tech,5651,Retail-Family Clothing Stores
+VC,Non-Tech,3714,Motor Vehicle Parts & Accessories
+VEEV,Software,7372,Services-Prepackaged Software
+VERX,Software,7372,Services-Prepackaged Software
+VIA,Software,7372,Services-Prepackaged Software
+VIAV,Semiconductors,3674,Semiconductors & Related Devices
+VIR,Non-Tech,2836,"Biological Products, (No Diagnostic Substances)"
+VNTXF,Non-Tech,,
+VREX,Semiconductors,3679,"Electronic Components, NEC"
+VRT,Semiconductors,3679,"Electronic Components, NEC"
+VSAT,Comm/Internet,4899,"Communications Services, NEC"
+VYX,Hardware,3578,Calculating & Accounting Machines (No Electronic Computers)
+W,Non-Tech,5961,Retail-Catalog & Mail-Order Houses
+WDAY,IT Services,7374,Services-Computer Processing & Data Preparation
+WERN,Non-Tech,4213,Trucking (No Local)
+WEX,Non-Tech,7389,"Services-Business Services, NEC"
+WFRD,Non-Tech,3533,Oil & Gas Field Machinery & Equipment
+WIT,IT Services,7371,Services-Computer Programming Services
+WKC,Non-Tech,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations)
+WLTH,Non-Tech,6199,Finance Services
+WLY,Non-Tech,2731,Books: Publishing or  Publishing & Printing
+WOLF,Semiconductors,3674,Semiconductors & Related Devices
+WRD,IT Services,7373,Services-Computer Integrated Systems Design
+WSM,Non-Tech,5700,"Retail-Home Furniture, Furnishings & Equipment Stores"
+WST,Non-Tech,3841,Surgical & Medical Instruments & Apparatus
+WTFC,Non-Tech,6022,State Commercial Banks
+WTW,Non-Tech,6411,"Insurance Agents, Brokers & Service"
+WU,Non-Tech,7389,"Services-Business Services, NEC"
+WVE,Non-Tech,2834,Pharmaceutical Preparations
+WW,Non-Tech,7200,Services-Personal Services
+XRAY,Non-Tech,3843,Dental Equipment & Supplies
+XRX,Hardware,3577,"Computer Peripheral Equipment, NEC"
+XYZ,Software,7372,Services-Prepackaged Software
+YELP,Non-Tech,7200,Services-Personal Services
+YEXT,IT Services,7374,Services-Computer Processing & Data Preparation
+ZBRA,Non-Tech,3560,General Industrial Machinery & Equipment
+ZD,Non-Tech,4822,Telegraph & Other Message Communications
+ZETA,Software,7372,Services-Prepackaged Software
+ZG,Non-Tech,7389,"Services-Business Services, NEC"
+ZIP,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+ZM,IT Services,7370,"Services-Computer Programming, Data Processing, Etc."
+ZS,IT Services,7371,Services-Computer Programming Services
+ZTS,Non-Tech,2834,Pharmaceutical Preparations

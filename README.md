@@ -22,7 +22,7 @@ Does where tech talent moves predict company value? This project builds a talent
 ## Components
 
 ### Data (`scripts/`, `src/talent_finder/`)
-- `build_panel.py` + `company_map.py`: parse 37 DOL H1B files (FY2010–2026) into a hiring panel.
+- `build_panel.py` + `company_map.py`: parse 37 DOL H1B files (FY2010-2026) into a hiring panel.
 - `sec_universe.py`: match H1B employers to 595 public tickers via SEC EDGAR.
 - `fetch_returns_nasdaq.py` / `fetch_returns_yahoo.py`: monthly returns (run on Brev to get past the corporate firewall and anti-bot blocks). `fetch_sic.py`: SEC SIC codes for tech filtering.
 

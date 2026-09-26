@@ -1,22 +1,14 @@
 # Talent-Flow Alpha
 
-Does **where tech talent goes** predict company value? This project builds a talent-migration
-signal from public data, backtests it against stock returns with proper factor controls, and
-runs the heavy compute on a **C++/CUDA + NCCL** engine with an **LLVM/NVPTX** signal compiler.
+Does where tech talent moves predict company value? This project builds a talent-migration signal from public data and backtests it against stock returns with factor controls. The heavy compute runs on a C++/CUDA engine with NCCL across GPUs, and signals are compiled through LLVM/NVPTX.
 
-## Headline finding (honest)
+## What we found
 
-- **Raw hiring *headcount* predicts nothing** — long/short Sharpe ≈ 0, collapses out-of-sample.
-- **Person-level talent *caliber* does.** The strongest signal — *how much a company pays vs. the
-  national market rate for the specific roles it hires* — **survives momentum + sector controls
-  within tech**: Fama-MacBeth on 220 tech firms gives rank-**IC +0.05**, **sector-neutral Sharpe
-  0.73** (positive 7/8 years). Economically sensible, factor-robust, consistent.
-- **Not yet statistically proven.** Fama-MacBeth t ≈ 1.6 — the binding limit is *history length*
-  (free price data only reaches ~2016 → 8 annual periods), not universe size. Adding more years
-  (paid history) is the clear path to significance.
+- Raw hiring headcount predicts nothing. The long/short Sharpe is about 0 and collapses out of sample.
+- Person-level talent caliber does. The strongest signal is how much a company pays relative to the national market rate for the specific roles it hires, and it holds up after momentum and sector controls within tech. Fama-MacBeth on 220 tech firms gives a rank IC of +0.05 and a sector-neutral Sharpe of 0.73, positive in 7 of 8 years. It is economically sensible and survives the factor controls.
+- It is not statistically proven yet. The Fama-MacBeth t is about 1.6. The limit is history length, not universe size: free price data only reaches back to about 2016, which leaves 8 annual periods. Paid history going further back is what would push it to significance.
 
-The lesson the whole project is organized around: **talent = caliber of individuals, not employee
-count.**
+The through-line is that talent means the caliber of individuals, not the number of employees.
 
 ## Pipeline
 
@@ -33,29 +25,24 @@ count.**
 
 **Data (`scripts/`, `src/talent_finder/`)**
 - `build_panel.py` + `company_map.py` — parse 37 DOL H1B files (FY2010–2026) into a hiring panel.
-- `sec_universe.py` — match H1B employers to **595 public tickers** via SEC EDGAR.
-- `fetch_returns_nasdaq.py` / `fetch_returns_yahoo.py` — monthly returns (run on Brev to bypass
-  the corporate firewall + anti-bot blocks). `fetch_sic.py` — SEC SIC codes for tech filtering.
+- `sec_universe.py` — match H1B employers to 595 public tickers via SEC EDGAR.
+- `fetch_returns_nasdaq.py` / `fetch_returns_yahoo.py` — monthly returns (run on Brev to get past the corporate firewall and anti-bot blocks). `fetch_sic.py` — SEC SIC codes for tech filtering.
 
-**Talent signals (three complementary lenses)**
-- `build_talent_openalex.py` — elite-researcher inflow (OpenAlex citations + affiliation history,
-  advisory-affiliation filtered).
-- `build_wage_talent.py` / `_broad.py` — role-adjusted **wage premium** (the one that backtests).
+**Talent signals (three lenses)**
+- `build_talent_openalex.py` — elite-researcher inflow (OpenAlex citations and affiliation history, filtered for advisory affiliations).
+- `build_wage_talent.py` / `_broad.py` — role-adjusted wage premium, the signal that backtests.
 - `build_talent_github.py` — GitHub OSS impact (snapshot).
-- `build_talent_index.py` — fuse into one z-scored talent index + trajectory.
+- `build_talent_index.py` — fuse these into one z-scored talent index plus trajectory.
 
 **Backtest (`engine/`)**
-- `include/backtest.hpp`, `src/main.cpp` — C++17 engine: momentum → cross-sectional rank →
-  long/short → Sharpe/IC/drawdown; 243-config sweep; out-of-sample split. `tests/` verify it.
-- `kernels/cuda_backtest.cu` — GPU sweep. `kernels/nccl_backtest.cu` — **2-GPU** sweep with
-  **NCCL** collectives (`ncclBroadcast` panel, `ncclAllReduce` global-best). Runs on 2× T4.
-- `scripts/factor_control_broad.py` — Fama-MacBeth + sector-neutral (the validation above).
+- `include/backtest.hpp`, `src/main.cpp` — C++17 engine: momentum, cross-sectional rank, long/short, Sharpe/IC/drawdown, a 243-config sweep, and an out-of-sample split. `tests/` verify it.
+- `kernels/cuda_backtest.cu` — GPU sweep. `kernels/nccl_backtest.cu` — 2-GPU sweep using NCCL collectives (`ncclBroadcast` for the panel, `ncclAllReduce` for the global best). Runs on 2× T4.
+- `scripts/factor_control_broad.py` — Fama-MacBeth and sector-neutral checks (the validation above).
 
-**Signal compiler (`engine/jit/`)** — turns the backtester into a *signal-search* compiler.
+**Signal compiler (`engine/jit/`)** — turns the backtester into a signal search.
 - `signal_ast.hpp` — backend-agnostic signal DSL/IR (`ewma`, `mean`, `lag`, arithmetic).
-- `jit_backtest.cpp` — lowers to **LLVM IR**, O2-optimizes, **ORC-JITs to native**, and searches
-  over signal *structures* by IC.
-- `emit_ptx.cpp` — same IR → **NVPTX**, emits valid GPU PTX (sm_75) for the NCCL engine.
+- `jit_backtest.cpp` — lowers to LLVM IR, optimizes at O2, ORC-JITs to native, and searches over signal structures by IC.
+- `emit_ptx.cpp` — takes the same IR to NVPTX and emits GPU PTX (sm_75) for the NCCL engine.
 
 ## Run it
 
@@ -76,8 +63,6 @@ bash engine/jit/build.sh && ./engine/jit/jit_backtest
 bash engine/jit/build_ptx.sh && ./engine/jit/emit_ptx "ewma(6,0.4) / mean(24) - 1"
 ```
 
-## Honest scope
+## Scope
 
-The **engineering** (data pipeline, C++/CUDA/NCCL engine, LLVM/NVPTX compiler) is complete and
-demonstrable. The **alpha** is promising but underpowered — a data-history limitation, not a flaw
-in the method. Not investment advice; research only.
+The engineering is finished and runs end to end: the data pipeline, the C++/CUDA/NCCL engine, and the LLVM/NVPTX compiler. The alpha is promising but underpowered, and that comes from how little history the free data covers, not from the method. Research only, not investment advice.
